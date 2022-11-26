@@ -158,7 +158,7 @@ func (h *handler)UpdateProduct(w http.ResponseWriter, r *http.Request){
 	}
 
 
-	if request.Image != "false" {
+	if request.Image != "" {
 		products.Image = request.Image
 	}
 
