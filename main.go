@@ -17,6 +17,8 @@ func main() {
 	if errEnv != nil {
 		panic("Failed to load env file")
 	}
+
+
 	mysql.DatabaseInit()
 	database.RunMigration()
 	r:= mux.NewRouter()
@@ -27,5 +29,5 @@ func main() {
 	var AllowedOrigins = handlers.AllowedOrigins([]string{"*"})
 	var port = os.Getenv("PORT")
 
-	http.ListenAndServe("localhost:"+port, handlers.CORS(AllowedHeaders, AllowedMethods, AllowedOrigins)(r))
+	http.ListenAndServe(":"+port, handlers.CORS(AllowedHeaders, AllowedMethods, AllowedOrigins)(r))
 }
